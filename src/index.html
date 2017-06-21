@@ -2,12 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>jQuery Adventures</title>
+
 </head>
 <body>
 
-<h1>Hello world</h1>
+<h1>Where do you want to go?</h1>
+<h2>Travel Destinations</h2>
+<p>Plan your next adventure.</p>
+<ul id="destinations">
+    <li class="vacation">
+        <h2>Taiwan</h2>
+        <button>Get Price</button>
+    </li>
+    <li>Tokyo</li>
+    <li>Bangkok</li>
+    <li>Phnompen</li>
+    <li class="promo">Manila</li>
+    <li>
+        <span>0</span>원
+    </li>
+</ul>
+<form id="myForm" data-price="562">
+    수량: <input type="text" size="3">개당 562원<br>
+    ajax요청: <input type="button" value="요청합니다.">
+</form>
 
-<script src="scripts/main.js"></script>
+<div id="resultDiv"></div>
+
+    <script src="scripts/jquery-3.2.1.js"></script>
+    <script src="scripts/main.js"></script>
 </body>
 </html>

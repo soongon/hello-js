@@ -219,6 +219,7 @@ if (clickConfirm) {
 */
 
 //12. 자바스크립트 객체
+/*
 
 var obj = {};
 
@@ -274,6 +275,94 @@ var artList =
             content: '테스트입니다.'
         }
     ];
+*/
+
+// 13. jQuery - hello
+jQuery(document).ready(function () {
+
+    $('#myForm').on('click', 'input:button', function() {
+        $.ajax('https://api.github.com/users/soongon', {
+            success: function (response) {
+                var login = response.login;
+                var id = response.id;
+                var loc = response.location;
+                var cAt = response.created_at;
+
+                $('#destinations')
+                    .children(':first-child')
+                    .children('h2')
+                    .text(login);
+                $('#destinations')
+                    .children(':nth-child(2)')
+                    .text(id);
+                $('#destinations')
+                    .children(':nth-child(3)')
+                    .text(loc);
+                $('#destinations')
+                    .children(':nth-child(4)')
+                    .text(cAt);
+            }
+        });
+    });
+
+    $('#destinations').on('mouseenter', 'li:nth-child(2)', function () {
+        $(this).parent('#destinations').children('li:last-child').slideUp();
+    });
+
+    $('#destinations').on('mouseout', 'li:nth-child(2)', function () {
+        $(this).parent('#destinations').children('li:last-child').fadeIn();
+    });
+
+    $('#myForm').on('keyup', 'input:text', function () {
+        //1.텍스트박스에 쓴 숫자를 가지고온다.
+        var howMany = isNaN(+$(this).val()) ? 0 : +$(this).val();
+        //console.log(howMany);
+
+        $('#destinations')
+            .children('li:last-child')
+            .children('span')
+            .text(howMany * 562);
+    });
+
+    $('.vacation').on('click', 'button', function () {
+        //버튼 위치에 가격이 나타나게 한다.
+        var priceTag = $('<p>From $399.99</p>');
+        $(this).after(priceTag);
+
+        //버튼 사라지게 한다.
+        $(this).remove();
+    });
+
+    // var priceTag = $('<p>From $399.99</p>');
+    //
+    // $('#destinations').children('li.vacation').prepend(priceTag);
+    //
+    // $('#destinations').children('li.promo').remove();
+
+    // var theText = $('h1').text();
+    // console.log(theText);
+    // $('h1').text('너 어디가니?');
+
+    // $('li').first().next().text('seoul');
+    // $('#destinations').find('li').first().text('seoul');
+    // $('.promo');
+
+    // #bookBigCon > ul:nth-child(1) > li:nth-child(2) > div.goods_img.bookTp > span > a > img
+
+    // $('#bookBigCon').children(ul).first().children('li').first().next()
+    //     .children('div.goods_img.bookTp').children('span').children('a').children('img')
+
+    // #eBookTabCon01 > div.newGoodsArea > ul > li:nth-child(1) > div.goods_info > p.goods_price
+    // $('#eBookTabCon01').children('div.newGoodsArea').children('ul').children('li').first()
+    //     .children('div.goods_info').children('p.goods_price')
+
+    //#jinyScrollItem_0 > ul > li:nth-child(2) > dl > dd > a > strong
+
+});
+
+
+
+
 
 
 
